@@ -1,0 +1,50 @@
+<header class="shadow-sm">
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+
+    <div class="container">
+
+      <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '200x100' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item mr-2">
+              <%= link_to root_path, class: 'btn btn-outline-light' do %>Top<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to homes_about_path, class: 'btn btn-outline-light' do %>About<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' do %>ログアウト<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to '投稿フォーム', new_post_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+            </li>
+          <% else %>
+            <li class="nav-item mr-2">
+              <%= link_to root_path, class: 'btn btn-outline-light' do %>Top<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to homes_about_path, class: 'btn btn-outline-light' do %>About<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to new_user_registration_path, class: 'btn btn-outline-light' do %>新規登録<% end %>
+            </li>
+            <li class="nav-item mr-2">
+              <%= link_to new_user_session_path, class: 'btn btn-outline-light' do %>ログイン<% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>

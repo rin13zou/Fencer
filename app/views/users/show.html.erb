@@ -1,18 +1,53 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p><%= link_to "プロフィール編集", edit_user_path %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+
+    <div class="col-md-3 mt-5">
+
+      <table class="table">
+        <tr style="border: none;">
+          <th style="border: none;">
+            <%= image_tag @user.get_profile_image(100,100) %>
+          </th>
+        </tr>
+        <tr class="mt-2">
+          <th><h6><%= @user.user_name %></h6></th>
+        </tr>
+        <tr>
+          <th>
+            <%= link_to edit_user_path(@user), class: "btn btn-info btn-block text-ehite", method: :get do %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+
+      <div style="margin-top: 100px;">
+        <%= form_with model: @post do |f| %>
+
+          <h5>新規投稿フォーム</h5>
+          <%= f.text_area :body, class: "btn-block" %>
+
+          <%= f.label :image, for: "f_image" do %>
+            <i class="far fa-image fa-3x"></i>
+            <%= f.file_field :image, style: "display:none;", id: "f_image", class: "btn btn-info" %>
+          <% end %> <br>
+
+          <%= f.submit "投稿", class: "btn btn-success form-control mb-3" %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <% @posts.each do |post| %>
+    <div col-md-8 offset-md-1>
+      <%= link_to post_path(post.id) do %>
+       <%#= image_tag post.get_image %>
+      <% end %>
+
+      <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
+      <p><%= post.body %></p>
+      <p>ユーザーネーム：<%= post.user.user_name %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
-
-
-<% @posts.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-   <%= image_tag post.get_image %>
-  <% end %>
-
-  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
-  <p><%= post.body %></p>
-  <p>ユーザーネーム：<%= post.user.user_name %></p>
-</div>
-<% end %>

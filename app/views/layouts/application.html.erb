@@ -5,39 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
-  <body>
-    <header>
-      <% if user_signed_in? %>
+    <%= render 'layouts/header' %>
 
-        <li>
-          <%= link_to '投稿フォーム', new_post_path %>
-        </li>
+    <body class="d-flex flex-column vh-100">
 
-        <li>
-          <%= link_to 'マイページ', user_path(current_user.id) %>
-        </li>
+      <main class="mb-auto">
+      <%= yield %>
+      </main>
 
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
+      <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <%= image_tag 'logo.jpg', size: '60x60' %>
+            </div>
+          </div>
+        </div>
+      </footer>
 
-      <% else %>
-
-        <li>
-          <%= link_to "新規登録",new_user_registration_path %>
-        </li>
-
-        <li>
-          <%= link_to "ログイン",new_user_session_path %>
-        </li>
-
-      <% end %>
-    </header>
-    <%= yield %>
-  </body>
+    </body>
 </html>
