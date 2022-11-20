@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+
+<p><%= post.user.user_name %>：<%= image_tag post.user.get_profile_image(100,100) %></p>
+
+<div>
+  <%= post.body %>
+</div>
+
+<% end %>

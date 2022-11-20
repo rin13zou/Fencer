@@ -1,23 +1,40 @@
-# README
+# Fencer
 
-This README would normally document whatever steps are n
+## サイト概要
+### サイトテーマ
 
-Things you may want to cover:
+フェンシングしている人同士の交流や情報交換コミュニティサイト
 
-* Ruby version
+### テーマを選んだ理由
 
-* System dependencies
+自分がフェンシングを小さいころからしており、今はやめてしまったのですが
+たまにフェンシングをまたやりたいなって思うときがあります。
+その時に痛感するのが、フェンシングはまだまだマイナー競技でプレーをできる環境が限られたりしている現状で、
+環境を探すのも一苦労します。
+そんな中にこのアプリがあれば、フェンシングに携わってる人と情報共有ができると考えました。
+さらに始めてみようかなって思う人もこのアプリがあれば、ハードルが下がるのではないかと考えました。
 
-* Configuration
+### ターゲットユーザー
 
-* Database creation
+- フェンシングをしているユーザー
+- フェンシングに携わってる人々
+- これからフェンシングを始めようかと思ってるユーザー
+- フェンシングをする場所などを提供する施設所有者
 
-* Database initialization
+### 主な利用シーン
 
-* How to run the test suite
+- フェンシングをした人がプレー写真などをのせたいとき
+- フェンシングしているユーザー同士でも情報共有をしたいとき
+- 動画などをのせて有識者からアドバイスをもらいたいとき
+- 各都道府県のプレーできる環境を探すとき
 
-* Services (job queues, cache servers, search engines, etc.)
+## 設計書
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
