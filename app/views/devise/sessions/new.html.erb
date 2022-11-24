@@ -1,37 +1,57 @@
-<div class="container">
-  <div class="row">
+<div class="container d-flex">
 
-    <div class="card">
-      <div class="card-body">
+  <div class="sessions-body">
 
-        <h5 class="card-title text-cneter">ログインフォーム</h5>
-
-        <%= form_with model: @user, url: user_session_path, local: :true do |f| %>
-
-        <div class="field card-text mt-2">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control", :placeholder => "email"%>
-        </div>
-
-        <div class="field card-text mt-2">
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", :placeholder => "パスワード" %>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit "ログイン", class:"btn btn-primary" %>
-        </div>
-
-        <% end %>
-
+    <div class="row">
+      <div class="pt-3 ml-4">
+        <h4 class="alart alert-secondary pl-2 pr-2">ログインフォーム</h4>
       </div>
     </div>
 
-      <%= render "devise/shared/links" %>
+
+    <div class="row text-center">
+
+      <div class="card">
+        <div class="card-body">
+
+          <%= form_with model: @user, url: user_session_path, local: :true do |f| %>
+
+          <div class="field card-text mb-3">
+            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email",class: "form-control", :placeholder => "email"%>
+          </div>
+
+          <div class="field card-text mb-3">
+            <%= f.password_field :password, class: "form-control", autocomplete: "current-password", class: "form-control", :placeholder => "パスワード" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "ログイン", class:"btn btn-primary pr-4 pl-4" %>
+          </div>
+
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
+
+  <div class="container">
+
+    <div class="row" >
+      <div class="col-mb-4 offset-mb-4 ml-5">
+        <h6>新規登録がまだの方は</h6>
+        <p style= "padding-bottom:50px;"><%= link_to "こちら", new_registration_path(resource_name) %>から新規してください</p>
+      </div>
+    </div>
+
+  </div>

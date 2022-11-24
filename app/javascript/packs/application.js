@@ -14,6 +14,8 @@ import "bootstrap";
 import "../stylesheets/application"
 import "../stylesheets/toppage"
 import "../stylesheets/registrations"
+import "../stylesheets/sessions"
+import "../stylesheets/users"
 import '@fortawesome/fontawesome-free/js/all'
 
 

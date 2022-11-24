@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins,controllers: {
    sessions: 'admins/sessions'
   }
-  
+
   get 'homes/about'
   devise_for :users
   root to: 'homes#top'
@@ -14,8 +14,13 @@ Rails.application.routes.draw do
    end
 
    resources :users, only: [:show, :edit, :update]
-   
+
    resources :users do
+
+    member do
+     get :favorites
+    end
+
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
