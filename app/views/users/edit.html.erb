@@ -1,8 +1,41 @@
-<h2>プロフィール編集</h2>
-<%= form_with model: @user do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container d-flex">
+
+  <div class="edit-users-body">
+
+    <div class="row">
+      <div class="ml-2">
+        <h4 class="alert alert-secondary pl-2 pr-2">プロフィール編集</h4>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="card">
+        <div class="card-body">
+          <%= form_with model: @user do |f| %>
+
+            <div class="field card-text mt-2">
+              <%= f.text_field :name, class: "form-control", autofocus: true, id:"inputName", placeholder:"名前"%>
+            </div>
+
+            <div class="field mt-2">
+              <div class="edit-profile-image">
+                <%= image_tag @user.get_profile_image(100,100) %>
+                <div class="profile-image">
+                  <%= f.label :image, for: "f_image" do %>
+                    <i class="fas fa-camera"></i>
+                    <%= f.file_field :image, style: "display:none;", id: "f_image", class: "btn btn-info" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="actions card-text mt-2 mb-2">
+              <%=f.submit "変更を保存", class:"btn btn-primary pr-4 pl-4" %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

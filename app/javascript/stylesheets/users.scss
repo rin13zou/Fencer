@@ -1,0 +1,29 @@
+.edit-users-body {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+  padding-bottom : 50px;
+}
+
+.edit-profile-image {
+  position: relative;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  background-color: black;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
