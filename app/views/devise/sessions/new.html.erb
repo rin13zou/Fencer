@@ -17,11 +17,11 @@
           <%= form_with model: @user, url: user_session_path, local: :true do |f| %>
 
           <div class="field card-text mb-3">
-            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email",class: "form-control", :placeholder => "email"%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control", :placeholder => "email"%>
           </div>
 
           <div class="field card-text mb-3">
-            <%= f.password_field :password, class: "form-control", autocomplete: "current-password", class: "form-control", :placeholder => "パスワード" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", :placeholder => "パスワード" %>
           </div>
 
           <% if devise_mapping.rememberable? %>

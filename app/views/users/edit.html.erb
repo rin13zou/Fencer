@@ -2,7 +2,7 @@
 
   <div class="edit-users-body">
 
-    <div class="row">
+    <div class="row ">
       <div class="ml-2">
         <h4 class="alert alert-secondary pl-2 pr-2">プロフィール編集</h4>
       </div>
@@ -14,14 +14,14 @@
           <%= form_with model: @user do |f| %>
 
             <div class="field card-text mt-2">
-              <%= f.text_field :name, class: "form-control", autofocus: true, id:"inputName", placeholder:"名前"%>
+              <%= f.text_field :user_name, class: "form-control", autofocus: true, id:"inputName", placeholder:"名前"%>
             </div>
 
             <div class="field mt-2">
               <div class="edit-profile-image">
                 <%= image_tag @user.get_profile_image(100,100) %>
-                <div class="profile-image">
-                  <%= f.label :image, for: "f_image" do %>
+                <div>
+                  <%= f.label :image,class: "profile-image", for: "f_image" do %>
                     <i class="fas fa-camera"></i>
                     <%= f.file_field :image, style: "display:none;", id: "f_image", class: "btn btn-info" %>
                   <% end %>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="actions card-text mt-2 mb-2">
-              <%=f.submit "変更を保存", class:"btn btn-primary pr-4 pl-4" %>
+              <%=f.submit "変更を保存", class:"profile-btn btn btn-primary pr-4 pl-4" %>
             </div>
 
           <% end %>

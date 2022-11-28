@@ -1,0 +1,41 @@
+<table class="table">
+  <tr style="border: none;">
+    <th class="image", style="border: none;">
+      <%= image_tag user.get_profile_image(100,100) %>
+    </th>
+  </tr>
+    <tr class="mt-2">
+      <th><h6><%= user.user_name %></h6></th>
+    </tr>
+    <tr>
+      <th>
+        <%= link_to follows_user_path(user),class: 'text-dark' do %>
+          フォロー数： <%= following_users.count %>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= link_to followers_user_path(user),class: 'text-dark' do %>
+          フォロワー数：<%= follower_users.count %>
+        <% end %>
+      </th>
+    </tr>
+
+    <tr>
+      <th>
+        <%=link_to favorites_user_path(user),class: 'text-dark' do %>
+          イイネ一覧
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <% if user == current_user %>
+          <%= link_to edit_user_path(user), class: "btn btn-info btn-block text-ehite", method: :get do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        <% end %>
+      </th>
+    </tr>
+</table>

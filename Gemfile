@@ -66,3 +66,6 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+# 非同期通信をするためのコード
+gem 'jquery-rails'
