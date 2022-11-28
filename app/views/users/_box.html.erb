@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+  <tr>
+    <th>
+      <%= link_to users_path,class: 'text-dark' do %>
+        ユーザー一覧
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th>
+      <%= link_to posts_path,class: 'text-dark' do %>
+        投稿一覧
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th>
+      <%= link_to new_post_path,class: 'text-dark' do %>
+        投稿フォーム
+      <% end %>
+    </th>
+  </tr>
+</table>

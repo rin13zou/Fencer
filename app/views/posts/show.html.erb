@@ -1,47 +1,72 @@
-<div>
-  <p><%= @post.user.user_name %>：<%= image_tag @post.user.get_profile_image(100,100) %></p>
-  <p><%= @post.body %></p>
-  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @post.user == current_user %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
-  <% end %>
-</div>
+<div class="container px-5 px-sm-0">
+  <div class="row">
 
-<div>
-  <p>コメント件数：<%= @post.post_comments.count %></p>
-  <% @post.post_comments.each do |post_comment| %>
+    <div class="col-md-3 mt-5">
 
-    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+      <%= render 'users/info', user: @user, following_users: @following_users, follower_users: @follower_users %>
 
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-    <% end %>
+      <%= render 'users/form', post: @post_form %>
 
-    <% if @post.favorited_by?(current_user) %>
+    </div>
 
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
 
-    <% else %>
+    <div class="col-md-4 offset-md-1 mt-5">
 
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
+      <table class="table">
+        <tr>
+          <th class="col-md-9">
+            <p><%= @post.user.user_name %>
+            <p><%= @post.body %></p>
+            <% if @post.posts_image.attached? %>
+              <h2><%= image_tag @post.get_posts_image(200,200) %></h2>
+            <% end %>
+            <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+            <% if @post.user == current_user %>
+              <%= link_to "削除", post_path(@post), method: :delete %>
+            <% end %>
+            <p>コメント件数：<%= @post.post_comments.count %></p>
+            <div id="favorite_buttons_<%= @post.id %>">
+              <%= render "favorites/favorites", post: @post %>
+            </div>
+          </th>
+        </tr>
 
-    <% end %>
-  <% end %>
-</div>
+        <tr>
+          <th class="col-md-9">
+            <% @post.post_comments.each do |post_comment| %>
 
-<div>
-  <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+
+              <p><%= image_tag post_comment.user.get_profile_image(60,60) %></p>
+              <p><%= post_comment.user.name %></p>
+              <p><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+              <p><%= post_comment.comment %></p>
+
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+              <% end %>
+            <% end %>
+
+          </th>
+        </tr>
+
+        <tr>
+          <th>
+            <%= form_with model: [@post, @post_comment] do |f| %>
+              <div class="form-contorol text-center">
+                <%= f.text_area :comment, rows: '5', autocomplete: "comment", class: "form-contorol",:placeholder => "コメントをここに" %>
+              </div>
+              <div class="text-center">
+                <%= f.submit "送信する",class:"btn btn-success" %>
+              </div>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-3 offset-md-1 mt-5">
+      <%= render "users/box" %>
+    </div>
+
+  </div>
 </div>

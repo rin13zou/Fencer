@@ -1,9 +1,36 @@
-<% @posts.each do |post| %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
 
-<p><%= post.user.user_name %>：<%= image_tag post.user.get_profile_image(100,100) %></p>
+    <div class="col-md-3 mt-5">
 
-<div>
-  <%= post.body %>
+      <%= render 'users/info', user: @user, following_users: @following_users, follower_users: @follower_users %>
+
+      <%= render 'users/form', post: @post %>
+
+    </div>
+
+    <div class="col-md-4 offset-md-1 mt-5">
+
+      <% @posts.each do |post| %>
+        <table class="table">
+
+          <th class="col-md-9" >
+            <%= link_to post_path(post.id),class: 'text-dark' do %>
+              <%= post.body %>
+
+              <% if post.posts_image.attached? %>
+                <h2><%= image_tag post.get_posts_image(200,200) %></h2>
+              <% end %>
+            <% end %>
+          </th>
+        </table>
+      <% end %>
+
+    </div>
+
+    <div class="col-md-3 offset-md-1 mt-5">
+      <%= render "users/box" %>
+    </div>
+
+  </div>
 </div>
-
-<% end %>

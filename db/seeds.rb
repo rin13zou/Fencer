@@ -8,7 +8,11 @@
 
 
 # 管理者ログイン用メールアドレスとパスワード
-Admin.create!(
-  email: "admin@admin",
-  password: "testtest"
+User.create!(name:  "フェンサー太郎",
+             name_kana: "フェンサータロウ",
+             user_name: "Fencer.admin",
+             email: "admin@admin",
+             password:  "testtest",
+             password_confirmation: "testtest",
+             admin: true
 )

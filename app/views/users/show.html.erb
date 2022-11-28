@@ -3,61 +3,50 @@
 
     <div class="col-md-3 mt-5">
 
-      <table class="table">
-        <tr style="border: none;">
-          <th style="border: none;">
-            <%= image_tag @user.get_profile_image(100,100) %>
-          </th>
-        </tr>
-        <tr class="mt-2">
-          <th><h6><%= @user.user_name %></h6></th>
-        </tr>
-        <tr>
-            <th>フォロー数： <%= @user.followings.count %></th>
-        </tr>
-        <tr>
-          <th>フォロワー数：<%= @user.followers.count %></th>
-        </tr>
+      <%= render 'users/info', user: @user, following_users: @following_users, follower_users: @follower_users %>
 
-        <tr>
-          <th><p><%=link_to"お気に入り記事", favorites_user_path(@user) %></p></th>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to edit_user_path(@user), class: "btn btn-info btn-block text-ehite", method: :get do %>
-              <i class="fas fa-user-cog"></i>
-            <% end %>
-          </th>
-        </tr>
-      </table>
+      <%= render 'users/form', post: @post %>
 
-      <div style="margin-top: 100px;">
-        <%= form_with model: @post do |f| %>
-
-          <h5>新規投稿フォーム</h5>
-          <%= f.text_area :body, class: "btn-block" %>
-
-          <%= f.label :image, for: "f_image" do %>
-            <i class="far fa-image fa-3x"></i>
-            <%= f.file_field :image, style: "display:none;", id: "f_image", class: "btn btn-info" %>
-          <% end %> <br>
-
-          <%= f.submit "投稿", class: "btn btn-success form-control mb-3" %>
-        <% end %>
-      </div>
     </div>
 
 
-    <% @posts.each do |post| %>
-    <div col-md-8 offset-md-1>
-      <%= link_to post_path(post.id) do %>
-       <%#= image_tag post.get_image %>
+    <div class="col-md-4 offset-md-1 mt-5">
+      <% @posts.each do |post| %>
+
+        <table class="table">
+          <tr>
+            <th class="image col-md-3">
+              <p><%= image_tag post.user.get_profile_image(60,60) %></p>
+              <h6>
+                ユーザーネーム</br>
+                ：<%= link_to post.user.user_name, user_path,class: "name-link" %>
+              </h6>
+            </th>
+            <th class="col-md-9">
+              <p><%= post.body %></p>
+              <% if post.posts_image.attached? %>
+                <h2><%= image_tag post.get_posts_image(200,200) %></h2>
+              <% end %>
+              <div id="favorite_buttons_<%= post.id %>">
+                <%= render "favorites/favorites", post: post %>
+              </div>
+                <% if user_signed_in? %>
+                  <% if current_user.id == post.user_id %>
+                    <%= link_to "削除する", post_path(post.id), method: :delete,class:"btn btn-danger" %>
+                  <% elsif current_user.admin? %>
+                    <%= link_to "管理者用削除", post_path(post.id), method: :delete,class:"btn btn-danger" %>
+                <% end %>
+              <% end %>
+            </th>
+          </tr>
+        </table>
       <% end %>
-
-      <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
-      <p><%= post.body %></p>
-      <p>ユーザーネーム：<%= post.user.user_name %></p>
     </div>
-    <% end %>
+
+    <div class="col-md-3 offset-md-1 mt-5">
+      <%= render "searches/search" %>
+      <%= render "users/box",style: "margin: 50px;" %>
+    </div>
+
   </div>
 </div>

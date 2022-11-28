@@ -16,6 +16,7 @@ import "../stylesheets/toppage"
 import "../stylesheets/registrations"
 import "../stylesheets/sessions"
 import "../stylesheets/users"
+import "../stylesheets/posts"
 import '@fortawesome/fontawesome-free/js/all'
 
 

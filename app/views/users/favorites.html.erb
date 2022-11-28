@@ -1,4 +1,40 @@
-いいね一覧
-<% @favorite_posts.each do |post|%>
-<%=post.title %>
-<% end %>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <div class="col-md-3 mt-5">
+
+             <%= render 'users/info', user: @user, following_users: @following_users, follower_users: @follower_users %>
+
+              <%= render 'users/form', post: @post %>
+
+        </div>
+
+        <div class="col-md-4 offset-md-1 mt-5">
+
+            <% @favorite_posts.each do |post|%>
+                <table class="table">
+                    <tr>
+                        <th class="image col-md-3">
+                            <p><%= image_tag post.user.get_profile_image(60,60) %></p>
+                            <h6>
+                                ユーザーネーム</br>
+                                ：<%= link_to post.user.user_name, user_path,class: "name-link" %>
+                            </h6>
+                        </th>
+                        <th class="col-md-9">
+                            <p><%= post.body %></p>
+                            <% if post.posts_image.attached? %>
+                                <h2><%= image_tag post.get_posts_image(200,200) %></h2>
+                            <% end %>
+                        </th>
+                    </tr>
+                </table>
+            <% end %>
+        </div>
+
+        <div class="col-md-3 offset-md-1 mt-5">
+            <%= render "searches/search" %>
+            <%= render "users/box",style: "margin: 50px;" %>
+        </div>
+
+    </div>
+</div>

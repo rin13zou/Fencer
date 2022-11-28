@@ -1,0 +1,15 @@
+<div style="margin-top: 100px;">
+  <%= form_with model: post, local:true do |f| %>
+
+    <h5>新規投稿フォーム</h5>
+    <%= f.text_area :body, class: "btn-block" %>
+
+    <%= f.label :posts_image, "画像をアップロード", class: "image_input_btn" %>
+    <%= f.file_field :posts_image, class: "image_form" %> <br>
+
+    <div class="form-inline mx-auto mb-5">
+      <%= f.submit '投稿', class: 'ml-5 mr-3 btn btn-sm btn-warning text-white' %>
+      <%#= f.submit '下書き', :name => 'draft', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
+    </div>
+  <% end %>
+</div>
