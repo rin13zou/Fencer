@@ -1,0 +1,8 @@
+<% @training_spots.each do |t| %>
+  <%= t.prefectures %>
+  <%= t.address %>
+  <% if current_user.admin? %>
+    <%= link_to "編集", edit_training_spot_path(t.id) %>
+    <%= link_to "削除", training_spot_path(t.id), method: :delete %>
+  <% end %>
+<% end %>
