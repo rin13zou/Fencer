@@ -69,3 +69,14 @@ gem "net-imap"
 
 # 非同期通信をするためのコード
 gem 'jquery-rails'
+
+# 地図情報を取得するためのコード
+
+# GoogleMapを簡単に作成できるgem
+gem "gmaps4rails"
+
+# 地名から緯度経度に変換できるgem
+gem "geocoder"
+
+# Jsでcontrollerの変換を使えるようにするgem
+gem "gon"

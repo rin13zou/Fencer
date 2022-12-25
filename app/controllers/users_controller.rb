@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :guest_check, only: [:edit, :update, :withdrawal]
 
   def show
     @user = User.find(params[:id])
@@ -67,6 +67,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image)
+  end
+
+  def guest_check
+    if current_user.email == 'guest@sample.com'
+      redirect_to root_path, notice: 'ゲストユーザーの場合この操作はできません。'
+    end
   end
 
 end
