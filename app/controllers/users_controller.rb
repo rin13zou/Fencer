@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @post = Post.new
     @following_users = @user.following_user
     @follower_users = @user.follower_user
-    @users = User.where(admin: false)
+    @users = User.where(admin: false).where(is_deleted: false)
   end
 
   def edit
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @user = current_user
+    @user = User.find(params[:id])
     @post = Post.new
     @following_users = @user.following_user
     @follower_users = @user.follower_user
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = current_user
+    @user = User.find(params[:id])
     @post = Post.new
     @following_users = @user.following_user
     @follower_users = @user.follower_user

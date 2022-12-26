@@ -9,14 +9,14 @@
     </tr>
     <tr>
       <th>
-        <%= link_to follows_user_path(user),class: 'text-dark' do %>
+        <%= link_to follows_user_path(user.id),class: 'text-dark' do %>
           フォロー数： <%= following_users.count %>
         <% end %>
       </th>
     </tr>
     <tr>
       <th>
-        <%= link_to followers_user_path(user),class: 'text-dark' do %>
+        <%= link_to followers_user_path(user.id),class: 'text-dark' do %>
           フォロワー数：<%= follower_users.count %>
         <% end %>
       </th>
