@@ -1,23 +1,41 @@
-<h2>Results index</h2>
+<div class="container">
+  <div class="search-body">
 
-<table class="table table-hover table-inverse">
+    <div class="row">
+      <div class="pt-3 ml-4">
+        <h4 class="alart alert-secondary pl-2 pr-2">検索結果</h4>
+      </div>
+    </div>
+
+    <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-        </tr>
+      <% if @range == "User" %>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+              　<%= link_to user_path(user.id), class: "text-dark" do %>
+                  <%= user.user_name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to post_path(post.id), class: "text-dark" do %>
+                  <%= post.body %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       <% end %>
-    </tbody>
-  <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.body %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+    </table>
+
+  </div>
+</div>
