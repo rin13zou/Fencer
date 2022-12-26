@@ -7,7 +7,7 @@ class TrainingSpotController < ApplicationController
   def create
     @training_spot = TrainingSpot.new(training_spot_params)
     if @training_spot.save
-      redirect_to  training_spot_index_path
+      redirect_to  training_spot_index_path, notice: "登録完了しました"
     else
 
     end
@@ -22,21 +22,25 @@ class TrainingSpotController < ApplicationController
   end
 
   def edit
-
+    @training_spot = TrainingSpot.find(params[:id])
   end
 
   def update
-
+    training_spot = TrainingSpot.find(params[:id])
+    training_spot.update(training_spot_params)
+    redirect_to training_spot_index_path, notice: "変更完了しました"
   end
 
   def destroy
-
+    training_spot = TrainingSpot.find(params[:id])
+    training_spot.destroy
+    redirect_to training_spot_index_path, alert: "登録削除しました"
   end
 
   private
 
   def training_spot_params
-    params.require(:training_spot).permit(:address, :prefectures, :latitude, :longitude)
+    params.require(:training_spot).permit(:address, :prefectures, :latitude, :longitude, :club_name)
   end
 
 end

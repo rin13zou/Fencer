@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_075344) do
   create_table "training_spots", force: :cascade do |t|
     t.string "address", null: false
     t.string "prefectures", null: false
+    t.string "club_name", null: false
     t.float "latitude", null: false
     t.float "longitude", null: false
     t.datetime "created_at", precision: 6, null: false

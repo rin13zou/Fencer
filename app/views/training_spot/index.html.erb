@@ -1,8 +1,47 @@
-<% @training_spots.each do |t| %>
-  <%= t.prefectures %>
-  <%= t.address %>
-  <% if current_user.admin? %>
-    <%= link_to "編集", edit_training_spot_path(t.id) %>
-    <%= link_to "削除", training_spot_path(t.id), method: :delete %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="training_spot_body">
+
+    <div class="row">
+      <div class="pt-3 ml-4">
+        <h4 class="alart alert-secondary pl-2 pr-2">練習場所一覧</h4>
+      </div>
+    </div>
+
+    <div class="row">
+
+
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th class="col-md-2">都道府県</th>
+              <th class="col-md-2">クラブ名</th>
+              <th class="col-md-6">住所</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @training_spots.each do |t| %>
+            <tbody>
+              <tr>
+                <td><%= t.prefectures %></td>
+                <td><%= t.club_name %></td>
+                <td>
+                  <%= link_to training_spot_path(t.id), class: "text-dark" do %>
+                    <%= t.address %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if current_user.admin? %>
+                    <%= link_to "編集", edit_training_spot_path(t.id),class: "btn btn-info" %>
+                    <%= link_to "削除", training_spot_path(t.id), method: :delete, class: "btn btn-danger" ,"data-confirm" => "本当に削除しますか？" %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+           <% end %>
+
+        </table>
+
+    </div>
+
+  </div>
+</div>

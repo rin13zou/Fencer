@@ -3,18 +3,20 @@
   <div class="training_spot_body">
 
    <div class="row">
+     
       <div class="pt-3 ml-4">
-        <h4 class="alart alert-secondary pl-2 pr-2">練習場所登録</h4>
+        <h4 class="alart alert-secondary pl-2 pr-2">練習場所編集</h4>
       </div>
+      
     </div>
 
 
   <div class="row">
     <div class="card">
       <div class="card-body">
-        <%= form_with model: @training_spot, url: training_spot_index_path, local:true do |f| %>
+        <%= form_with model: @training_spot, url: training_spot_path(@training_spot.id), local:true do |f| %>
           <div class="spot">
-            <div class="card-text　mt-3">
+            <div class="card-text mt-3">
               <%= f.label :address, "練習場所" %>
               <%= f.text_field :address, :placeholder => "練習場所を入力", autofocus: true %>
             </div>
@@ -27,7 +29,7 @@
               <%= f.text_field :club_name, :placeholder => "クラブ名を入力" %>
             </div>
             <div class="card-text mt-3">
-              <%= f.submit '登録', class: 'ml-5 mr-3 btn btn-sm btn-success text-white' %>
+              <%= f.submit '保存', class: 'ml-5 mr-3 btn btn-sm btn-primary text-white' %>
             </div>
           </div>
     <% end %>

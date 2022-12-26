@@ -1,6 +1,29 @@
-  <%= @training_spot.address %>
-  <div id='map' style = "width: 600px; height: 400px;"></div>
+<div class="container">
+  <div class="training_spot_body">
 
+
+    <div class="row">
+      <div class="pt-3 ml-5">
+        <h4 class="alart alert-secondary pl-2 pr-2">練習場所住所</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 ml-5 mb-3">
+        <%= @training_spot.address %>
+      </div>
+
+      <div class="ml-5 mt-3" id='map' style = "width: 600px; height: 400px;"></div>
+    </div>
+
+    <div class="training_spot_index">
+      <%= link_to training_spot_index_path, class: "text-dark" do %>
+        <h6>一覧ページに戻る</h6>
+      <% end %>
+    </div>
+
+  </div>
+</div>
   <script>
   let map
 

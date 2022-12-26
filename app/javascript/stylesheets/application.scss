@@ -4,7 +4,11 @@
 
 // ヘッダー部分の色を指定しています。
 .navbar {
-  background-color: #afeeee;
+  background: linear-gradient(to right, #2af598 0%, #009efd 100%);
+}
+
+.footer {
+  background: linear-gradient(to right, #009efd 0%, #2af598 100%);
 }
 
 //　このサイトのボディ部分の色を指定している。
