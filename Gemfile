@@ -55,7 +55,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# devuseをインストールするために記述　11/8
+# devuseをインストールするために記述
 gem 'devise'
 
 gem 'dotenv-rails'

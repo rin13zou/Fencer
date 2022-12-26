@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id), notice: "投稿完了しました"
   end
 
 
@@ -29,13 +29,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_form = Post.new
     @post_comment = PostComment.new
-    # @posts = Post.where(user_id: [current_user.id, *current_user.following_ids])
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, alert: "削除完了しました"
   end
 
   def post_params

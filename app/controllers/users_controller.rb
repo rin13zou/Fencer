@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to user_path, notice: "ユーザー情報更新しました"
   end
 
   def favorites
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, alert: "退会処理しました"
   end
 
 
